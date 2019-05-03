@@ -34,9 +34,8 @@ var guess; //user guess
 var letters = []; //correctly guessed letters
 var wrongLetters = []; //incorrectly guessed letters
 var counter = 1; //counts incorrect letters
-var lives = 10; //counts users lives
-
-var wordList = ["deadpool", "superman", "batman", "wonder woman", "wolverine"];
+var lives = 9; //counts users lives
+var wordList = ["deadpool", "superman", "batman", "wonder woman", "wolverine"]; //heros!
 
 //randomly chooses a superhero
 var word = wordList[Math.floor(Math.random() * wordList.length)];
@@ -71,17 +70,20 @@ function checkLetter() {
       wrongLetters.push(guess);
       document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" ");
       document.getElementById("counter").innerHTML = counter++;
+      document.getElementById("remainingGuesses").innerHTML = lives--;
     }
   }
 }
 
-function untilDeath() {
-    document.getElementById("remainingGuesses").innerHTML = (lives - parseInt(counter));
-  }
+function youLose() {
+    if(lives <= 0) {
+      alert ("you lose");
+    }
+}
 
 start();
 checkLetter();
-untilDeath();
+
 
 </script>
 
