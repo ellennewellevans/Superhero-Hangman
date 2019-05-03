@@ -8,9 +8,12 @@ body {
   height:100%;
   font-size:18px;
 }
+
 .container{
   text-align: left;
+  display: block;
 }
+ 
 .wrappper{
   width:100%;
   margin:0 auto;
