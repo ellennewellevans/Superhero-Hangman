@@ -22,17 +22,19 @@
     <p>Incorrect Letters</p>
     <p id="wrongGuesses"></p>
   </div>
+  <div class="container">
+      <p>Remaining Lives</p>
   <p id="remainingGuesses"></p>
 </div>
 
 
 <script type="text/javascript">
-var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+var alphabet = "abcdefghijklmnopqrstuvwxyz".split(""); //all letters
 var guess; //user guess
 var letters = []; //correctly guessed letters
 var wrongLetters = []; //incorrectly guessed letters
 var counter = 1; //counts incorrect letters
-var lives; //counts users lives
+var lives = 10; //counts users lives
 
 var wordList = ["deadpool", "superman", "batman", "wonder woman", "wolverine"];
 
@@ -73,8 +75,13 @@ function checkLetter() {
   }
 }
 
+function untilDeath() {
+    document.getElementById("remainingGuesses").innerHTML = (lives - parseInt(counter));
+  }
+
 start();
 checkLetter();
+untilDeath();
 
 </script>
 
