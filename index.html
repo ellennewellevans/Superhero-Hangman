@@ -9,33 +9,29 @@
 
 <body>
 
-<div class="wrapper">
   <h1>Superhero Hangman</h1>
   <h2>Guess the hero's name</h2>
-  <p>Press the letter keys to guess the hero!</p>
-  <p><span id="answer"></span></p>
   <div class="container">
+    <p>Press the letter keys to guess the hero!</p>
+    <p><span id="answer"></span></p>
+    <p>Incorrect Letters</p>
+    <p id="wrongGuesses"></p>   
     <p>Incorrect Guesses</p>
     <p id="counter"></p>
+    <p>Remaining Lives</p>
+    <p id="remainingGuesses"></p>
   </div>
-  <div class="container">
-    <p>Incorrect Letters</p>
-    <p id="wrongGuesses"></p>
-  </div>
-  <div class="container">
-      <p>Remaining Lives</p>
-  <p id="remainingGuesses"></p>
-</div>
 
 
 <script type="text/javascript">
+
 var alphabet = "abcdefghijklmnopqrstuvwxyz".split(""); //all letters
 var guess; //user guess
 var letters = []; //correctly guessed letters
 var wrongLetters = []; //incorrectly guessed letters
 var counter = 1; //counts incorrect letters
 var lives = 9; //counts users lives
-var wordList = ["deadpool", "superman", "batman", "wonder woman", "wolverine"]; //heros!
+var wordList = ["deadpool", "superman", "batman", "wonderwoman", "wolverine"]; //heros!
 
 //randomly chooses a superhero
 var word = wordList[Math.floor(Math.random() * wordList.length)];
@@ -76,7 +72,7 @@ function checkLetter() {
 }
 
 function youLose() {
-    if(lives <= 0) {
+    if(lives = 0) {
       alert ("you lose");
     }
 }
