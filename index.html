@@ -68,17 +68,24 @@ function checkLetter() {
       document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" "); //add incorect letters to html
       document.getElementById("counter").innerHTML = counter++; // add incorrect guesses
       document.getElementById("remainingGuesses").innerHTML = lives--;// add remaining guesses counter
-
-      function youLose() { //help me I can't fix this
-        if (document.getElementById("remainingGuesses") === 0)
-        alert("You Lose!")
-      };
+      switch(lives) {
+      case -1: alert("You Lose");
+      }
     }
   }
 }
 
+
 start();
 checkLetter();
+
+
+
+function youLose() { //help me I can't fix this
+  if ("remainingGuesses" == 0) {
+  alert("You Lose!");
+  }
+}
 
 </script>
 
