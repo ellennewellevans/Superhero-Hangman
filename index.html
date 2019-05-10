@@ -70,7 +70,7 @@ function checkLetter() {
         document.getElementById("counter").innerHTML = counter++; // add incorrect guesses
         document.getElementById("remainingGuesses").innerHTML = lives;// add remaining guesses counter
         switch(lives) {
-          case -1: alert("You Lose");
+          case 0: alert("You Lose");
         }
       }
     } else {
