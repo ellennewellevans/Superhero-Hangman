@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <html lang="English">
+<head> 
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Let's Play Superhero Hangman!</title>
+</head>
+
+<body>
+  <h1>Superhero Hangman</h1>
+  <h2>Guess the hero's name</h2>
+  <div class="container">
+    <p>Press the letter keys to guess the hero!</p>
+    <p><span id="answer"></span></p>
+    <p>Incorrect Letters</p>
+    <p><span id="incorrectLetters"></span></p>   
+    <p>Remaining Lives</p>
+    <p><span id="remainingLives"></span></p>
+    <p>Remaining Letters</p>
+    <p><span id="remainingLetters"></span></p>
+  </div>
+
+<script type="text/javascript">
+
+//possible solutions
+var words = [
+    "superman",
+    "wonderwoman",
+    "batman",
+    "wolverine"
+];
+var lives = 10; //counts users lives
+
+//select a possible solution
+var word = words[Math.floor(Math.random() * words.length)];
+console.log(word);
+
+//create underscores
+var answerArray = [];
+for (var i = 0; i < word.length; i++){
+    answerArray[i] = "_";
+}
+
+//create varible for remaining letters to guess
+var remainingLetters = word.length;
+while (remainingLetters > 0){
+    var progress = document.getElementById("remainingLetters");
+    progress.innerHTML = answerArray.join(" ");
+
+    function checkLetter() {
+        document.onkeyup = function(event) { // event on keypress
+        guess = event.key.toLowerCase(); // making lowercase
+        var found = false;
+    if (guess === word[i]) {
+        letters[i] = guess; //is it in the solution
+        document.getElementById("answer").innerHTML = letters.join(" "); //write to solution if in solution
+        found = true;
+        console.log(word[i]);
+    } if (guess === null) {
+        //exit the game loop
+        document.getElementById("remainingGuesses").innerHTML = lives--;
+    } else if (guess.length !== 1) {
+        alert("Please enter a single letter");
+    } else {
+        //update the game state with the guess
+        for (var j = 0; j < word.length; j++) {
+            if (word[j] === guess) {
+                answerArray[j] = guess;
+                remainingLetters--;
+            } //go through each letter in the answer array index
+        }
+    }
+    //end of the game loop
+    }
+    }
+}
+progress.innerHTML= answerArray.join(" ")
+alert("Good job! The answer was " + word + ".");
+
+
+</script>
+
+</body>
+</html>

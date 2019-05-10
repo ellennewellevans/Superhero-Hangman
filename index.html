@@ -29,8 +29,8 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz".split(""); //all letters
 var guess; //user guess
 var letters = []; //correctly guessed letters
 var wrongLetters = []; //incorrectly guessed letters
-var counter = 1; //counts incorrect letters
-var lives = 9; //counts users lives
+var counter = 0; //counts incorrect letters
+var lives = 10; //counts users lives
 var wordList = ["deadpool", "superman", "batman", "wonderwoman", "wolverine"]; //heros!
 
 //randomly chooses a superhero
@@ -56,36 +56,36 @@ function checkLetter() {
     for (i = 0; i < word.length; i++) { // runs through the solution letters
       if (guess === word[i]) {
         letters[i] = guess; //is it in the solution
-        document.getElementById("answer").innerHTML = letters.join(" "); //write to solution if in solution
         found = true;
+        console.log(word[i]);
       }
     }
- 
-    if (found) return; //if yes show in space
-    
-    if (wrongLetters.indexOf(guess) < 0) {
-      wrongLetters.push(guess);
-      document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" "); //add incorect letters to html
-      document.getElementById("counter").innerHTML = counter++; // add incorrect guesses
-      document.getElementById("remainingGuesses").innerHTML = lives--;// add remaining guesses counter
-      switch(lives) {
-      case -1: alert("You Lose");
+    document.getElementById("answer").innerHTML = letters.join(" "); //write to solution if in solution
+  
+    if (!found) {
+      lives--;
+      if (wrongLetters.indexOf(guess) === -1) {
+        wrongLetters.push(guess);
+        document.getElementById("wrongGuesses").innerHTML = wrongLetters.join(" "); //add incorect letters to html
+        document.getElementById("counter").innerHTML = counter++; // add incorrect guesses
+        document.getElementById("remainingGuesses").innerHTML = lives;// add remaining guesses counter
+        switch(lives) {
+          case -1: alert("You Lose");
+        }
       }
-    }
+    } else {
+      
+       var noUnderscore = !letters.includes("__");
+       if (noUnderscore) {
+         alert("You Win!!!");
+       }
+
+    } //if yes show in space
   }
 }
-
 
 start();
 checkLetter();
-
-
-
-function youLose() { //help me I can't fix this
-  if ("remainingGuesses" == 0) {
-  alert("You Lose!");
-  }
-}
 
 </script>
 
